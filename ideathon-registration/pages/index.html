@@ -1,15 +1,144 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <title>Ideathon - Landing</title>
-  <link rel="stylesheet" href="../assets/css/style.css">
+    <meta charset="utf-8" />
+    <title>Ideathon - Ignite Your Innovation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for Inter font and Light Theme Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    // Custom Colors for Light Theme
+                    colors: {
+                        'primary-blue': '#007bff',        /* Primary Accent Color */
+                        'light-bg': '#a6ccf5',            /* Main Application Background */
+                        'card-light': 'rgba(255, 255, 255, 0.95)', /* Card Background */
+                        'text-dark': '#343a40',           /* Primary Text Color */
+                        'text-secondary': '#6c757d',      /* Muted Text Color */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS for the Techy Background Effect -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+        body {
+            /* Fallback for background, the rest is handled by Tailwind and the canvas */
+            background-color: #f8f9fa; /* Light theme background */
+            overflow-x: hidden;
+        }
+
+        /* Techy Grid/Pulse Effect - Adjusted for Light Theme */
+        .background-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* Light gradient and grid dots */
+            background: linear-gradient(135deg, #e0e7ee 0%, #f0f4f7 100%); 
+            opacity: 0.9;
+            background-image: radial-gradient(#18191a 1px, transparent 0);
+            background-size: 40px 40px;
+            animation: tech-pulse 30s linear infinite;
+        }
+
+        @keyframes tech-pulse {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 400px 400px;
+            }
+        }
+        
+        /* Apply subtle blur and border to the card using standard CSS for better effect */
+        .card-glow {
+            backdrop-filter: blur(5px); 
+            /* Border uses a light blue shade for glow effect */
+            border: 1px solid rgba(0, 123, 255, 0.2); 
+        }
+
+        /* Button styling relying heavily on Tailwind classes */
+        .primary-btn {
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+        }
+        .primary-btn:hover {
+             box-shadow: 0 10px 25px rgba(0, 123, 255, 0.5);
+        }
+    </style>
 </head>
-<body>
-  <div class="card" style="text-align:center;">
-    <h1>Ideathon Registration</h1>
-    <p class="sub">Register your team and upload payment screenshot. Teams 1–3 members.</p>
-    <a href="register.html"><button class="primary">Register Now</button></a>
-  </div>
+<body class="font-sans text-text-dark bg-light-bg min-h-screen flex flex-col justify-center items-center p-4">
+    <div class="background-canvas"></div> 
+    
+    <div class="w-full max-w-4xl z-10 space-y-8">
+        <!-- Main Card Section -->
+        <div class="card bg-card-light card-glow rounded-xl shadow-2xl shadow-primary-blue/20 p-8 sm:p-12 text-center transition duration-500 hover:shadow-primary-blue/40">
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-primary-blue mb-2 tracking-tight" style="text-shadow: 0 0 5px rgba(0, 123, 255, 0.4);">
+                🚀 Swizosoft Ideathon 2025
+            </h1>
+            <p class="text-xl sm:text-2xl font-light text-text-secondary mb-8">
+                Innovate. Collaborate. Dominate the Future.
+            </p>
+            
+            <p class="text-lg text-text-dark max-w-2xl mx-auto mb-10">
+                Join the ultimate challenge to turn your groundbreaking ideas into viable solutions. Form your team of 1 to 3 members and get ready to code and create!
+            </p>
+            
+            <a href="register.html" class="inline-block group">
+                <button class="primary-btn bg-primary-blue text-white font-bold py-3 px-8 rounded-lg text-lg uppercase transition transform duration-300 hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-primary-blue/50">
+                    Register Your Team Now
+                </button>
+            </a>
+            
+            <div class="mt-8 pt-6 border-t border-gray-300">
+                <p class="text-sm text-text-secondary">
+                    Payment proof (screenshot) is required during registration to confirm your slot.
+                </p>
+            </div>
+        </div>
+
+        <!-- Additional Content: Key Themes -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            <div class="theme-card bg-card-light card-glow rounded-xl p-6 transition duration-300 hover:bg-gray-100">
+                <h3 class="text-2xl font-semibold text-green-600 flex items-center mb-3">
+                    <span class="mr-2">🌱</span> Sustainability Tech
+                </h3>
+                <p class="text-text-secondary text-sm">
+                    Develop solutions for green energy, waste management, and climate modeling.
+                </p>
+            </div>
+            <div class="theme-card bg-card-light card-glow rounded-xl p-6 transition duration-300 hover:bg-gray-100">
+                <h3 class="text-2xl font-semibold text-purple-600 flex items-center mb-3">
+                    <span class="mr-2">🧠</span> AI & ML Tools
+                </h3>
+                <p class="text-text-secondary text-sm">
+                    Focus on practical applications of machine learning in education, finance, or health.
+                </p>
+            </div>
+            <div class="theme-card bg-card-light card-glow rounded-xl p-6 transition duration-300 hover:bg-gray-100">
+                <h3 class="text-2xl font-semibold text-yellow-600 flex items-center mb-3">
+                    <span class="mr-2">🌐</span> Web3 & Decentralization
+                </h3>
+                <p class="text-text-secondary text-sm">
+                    Build dApps, smart contracts, or novel solutions leveraging blockchain technology.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Call to Action Footer -->
+        <footer class="text-center p-4 text-text-secondary text-sm">
+            <p>&copy; 2025 Ideathon powered by Innovation Hub. | Secure your future now.</p>
+        </footer>
+    </div>
 </body>
 </html>
