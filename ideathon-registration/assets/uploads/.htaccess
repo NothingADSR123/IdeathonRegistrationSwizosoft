@@ -1,0 +1,14 @@
+# Prevent script execution and listing in uploads
+Options -Indexes
+
+<FilesMatch "\.(php|php5|phtml|pl|py|jsp|asp|aspx|sh|cgi)$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>
+
+<Files ".htaccess">
+    Require all denied
+</Files>

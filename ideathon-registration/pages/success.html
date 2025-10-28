@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Registration Success</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>.center{display:flex;flex-direction:column;align-items:center;gap:12px;padding:20px}</style>
+</head>
+<body>
+  <div class="card center">
+    <h1>Registration Successful 🎉</h1>
+    <div id="info" class="success-box">Preparing your QR...</div>
+    <div id="qrWrap"></div>
+    <p style="color:#9fb0cc">Save this QR or screenshot it — you'll need it at check-in.</p>
+    <a href="register.html"><button class="primary">Register another team</button></a>
+  </div>
+
+  <script>
+    (async function(){
+      const params = new URLSearchParams(location.search);
+      const team = params.get('team') || '';
+      const id = params.get('id') || '';
+
+      document.getElementById('info').textContent = `Team: ${team} • ID: ${id}`;
+
+      if (!team) {
+        document.getElementById('info').textContent = 'Missing team info';
+        return;
+      }
+
+      try {
+        const resp = await fetch(`../backend/generate_qr.php?team=${encodeURIComponent(team)}`);
+        const json = await resp.json();
+        const img = document.createElement('img');
+        img.src = json.qr;
+        img.alt = 'QR for ' + team;
+        img.style.borderRadius = '8px';
+        document.getElementById('qrWrap').appendChild(img);
+      } catch (err) {
+        document.getElementById('qrWrap').textContent = 'Failed to load QR';
+      }
+    })();
+  </script>
+</body>
+</html>

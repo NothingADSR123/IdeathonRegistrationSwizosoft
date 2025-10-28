@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Register — Ideathon</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/checkTeam.js"></script>
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <div class="card">
+    <h1>Ideathon — Registration</h1>
+    <p class="sub">Team registration (1 to 3 members). Upload GPay screenshot (max 2MB).</p>
+
+    <form id="regForm" enctype="multipart/form-data">
+      <div class="form-row">
+        <div class="form-col">
+          <label>Team Name *</label>
+          <input id="team_name" name="team_name" type="text" required>
+          <span id="team-status"></span>
+        </div>
+        <div class="form-col">
+          <label>Leader Name *</label>
+          <input name="leader_name" type="text" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-col">
+          <label>Email *</label>
+          <input name="email" type="email" required>
+        </div>
+        <div class="form-col">
+          <label>Phone *</label>
+          <input name="phone" type="tel" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-col">
+          <label>University / Organization</label>
+          <input name="university" type="text">
+        </div>
+        <div class="form-col">
+          <label>State</label>
+          <input name="state" type="text">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-col">
+          <label>Region</label>
+          <input name="region" type="text">
+        </div>
+        <div class="form-col">
+          <label>Member 1</label>
+          <input name="member1" type="text" placeholder="optional">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-col">
+          <label>Member 2</label>
+          <input name="member2" type="text" placeholder="optional">
+        </div>
+        <div class="form-col">
+          <label>GPay Payment Screenshot *</label>
+          <input name="payment_screenshot" type="file" accept="image/*" required>
+          <small class="hint">Allowed: jpg, jpeg, png, gif, webp. Max 2MB.</small>
+        </div>
+      </div>
+
+      <button type="submit" class="primary">Register</button>
+    </form>
+  </div>
+</body>
+</html>

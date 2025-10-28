@@ -1,0 +1,5 @@
+# top-level rules (optional)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # deny direct access to backend PHP files from public if you want (careful)
+</IfModule>
