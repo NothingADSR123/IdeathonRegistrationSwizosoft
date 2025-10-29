@@ -63,11 +63,17 @@
           <label>Member 2</label>
           <input name="member2" type="text" placeholder="optional">
         </div>
-        <div class="form-col">
-          <label>GPay Payment Screenshot *</label>
-          <input name="payment_screenshot" type="file" accept="image/*" required>
-          <small class="hint">Allowed: jpg, jpeg, png, gif, webp. Max 2MB.</small>
-        </div>
+      </div>
+      <div  class="form-row">
+      <div class="form-col">
+        <label>Scan the QR code for Payment</label>
+        <img src="../assets/QRcodeimage.jpg" alt="QR code" style="max-width:200px;border: radius 8px;align-self:center;">
+      </div>
+      <div class="form-col">
+        <label>Payment Screenshot *</label>
+        <input name="payment_screenshot" type="file" accept="image/*" required>
+        <small class="hint">Allowed: jpg, jpeg, png, webp. Max 2MB.</small>
+      </div>
       </div>
 
       <button type="submit" class="primary">Register</button>
