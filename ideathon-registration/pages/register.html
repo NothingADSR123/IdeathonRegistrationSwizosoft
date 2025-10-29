@@ -5,23 +5,27 @@
   <meta charset="utf-8" />
   <title>Register — Swizosoft Ideathon</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  
+
   <script src="../assets/js/checkTeam.js" defer></script>
   <script src="../assets/js/main.js" defer></script>
 
-  <!-- Tailwind (for quick styling + animation polish) -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- AOS (Animate on Scroll) -->
+
+  <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => AOS.init());
-  </script>
+  <script>document.addEventListener("DOMContentLoaded", () => AOS.init());</script>
 
   <style>
+    /* Background animation */
     body {
       background-color: #a6ccf5;
       overflow-x: hidden;
       font-family: 'Inter', sans-serif;
+      color: #2d3748;
+      /* slightly darker neutral text */
     }
 
     .background-canvas {
@@ -46,52 +50,102 @@
         background-position: 400px 400px;
       }
     }
+
+    /* Card styling to match reference */
+    .card {
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+      border-radius: 18px;
+    }
+
+    h1 {
+      color: #1e293b;
+      font-weight: 700;
+    }
+
+    p.sub {
+      color: #64748b;
+      font-size: 15px;
+    }
+
+    label {
+      color: #334155;
+      font-weight: 500;
+    }
+
+    input,
+    select {
+      border-color: #d1d5db;
+      color: #1f2937;
+    }
+
+    button.primary {
+      background-color: #007bff;
+    }
+
+    button.primary:hover {
+      background-color: #005dc3;
+    }
   </style>
 </head>
 
 <body class="flex items-center justify-center min-h-screen">
   <div class="background-canvas"></div>
 
-  <div class="bg-white/90 backdrop-blur-lg shadow-xl rounded-2xl p-8 w-full max-w-3xl" data-aos="fade-up"
-    data-aos-duration="800">
+  <div class="card backdrop-blur-lg p-8 w-full max-w-3xl" data-aos="fade-up" data-aos-duration="800">
 
-    <h1 class="text-3xl font-bold mb-2 text-gray-900 text-center">Swizosoft Ideathon — Registration</h1>
-    <p class="text-center text-gray-700 mb-8">Register your team (1–3 members). Upload payment screenshot (max 2MB).</p>
+    <h1 class="text-3xl font-bold mb-2 text-center">Swizosoft Ideathon — Registration</h1>
+    <p class="sub text-center mb-8">Register your team (1–3 members). Upload payment screenshot (max 2MB).</p>
 
-    <form id="regForm" enctype="multipart/form-data" class="space-y-4">
+    <form id="regForm" enctype="multipart/form-data" class="space-y-5">
+      <!-- TEAM NAME + PARTICIPANTS -->
       <div class="grid md:grid-cols-2 gap-4">
         <div>
-          <label class="block font-semibold mb-1">Team Name *</label>
+          <label class="block mb-1">Team Name *</label>
           <input id="team_name" name="team_name" type="text" required class="w-full border px-3 py-2 rounded-md">
           <span id="team-status" class="text-sm"></span>
         </div>
-
         <div>
-          <label class="block font-semibold mb-1">Leader Name *</label>
-          <input name="leader_name" type="text" required class="w-full border px-3 py-2 rounded-md">
+          <label class="block mb-1">Total Participants *</label>
+          <select id="total_members" name="total_members" required class="w-full border px-3 py-2 rounded-md">
+            <option value="">Select</option>
+            <option value="1">1 (Leader only)</option>
+            <option value="2">2 (Leader + 1)</option>
+            <option value="3">3 (Leader + 2)</option>
+          </select>
         </div>
       </div>
 
+      <!-- LEADER, EMAIL, PHONE, UNI, REGION, STATE -->
       <div class="grid md:grid-cols-2 gap-4">
         <div>
-          <label class="block font-semibold mb-1">Email *</label>
-          <input name="email" type="email" required class="w-full border px-3 py-2 rounded-md">
+          <label class="block mb-1">Leader Name *</label>
+          <input name="leader_name" type="text" required class="w-full border px-3 py-2 rounded-md">
         </div>
-
         <div>
-          <label class="block font-semibold mb-1">Phone *</label>
+          <label class="block mb-1">Phone *</label>
           <input name="phone" type="tel" required class="w-full border px-3 py-2 rounded-md">
         </div>
       </div>
 
       <div class="grid md:grid-cols-2 gap-4">
         <div>
-          <label class="block font-semibold mb-1">University / Organization</label>
+          <label class="block mb-1">Email *</label>
+          <input name="email" type="email" required class="w-full border px-3 py-2 rounded-md">
+        </div>
+        <div>
+          <label class="block mb-1">University / Organization</label>
           <input name="university" type="text" class="w-full border px-3 py-2 rounded-md">
         </div>
+      </div>
 
+      <div class="grid md:grid-cols-2 gap-4">
         <div>
-          <label class="block font-semibold mb-1">State</label>
+          <label class="block mb-1">Region</label>
+          <input name="region" type="text" class="w-full border px-3 py-2 rounded-md">
+        </div>
+        <div>
+          <label class="block mb-1">State</label>
           <select name="state" required class="w-full border px-3 py-2 rounded-md">
             <option value="">Select state / UT</option>
             <option>Andhra Pradesh</option>
@@ -133,28 +187,23 @@
         </div>
       </div>
 
-      <div>
-        <label class="block font-semibold mb-1">Region</label>
-        <input name="region" type="text" class="w-full border px-3 py-2 rounded-md">
+      <!-- MEMBER FIELDS -->
+      <div class="grid md:grid-cols-2 gap-4">
+        <div id="member1Field" class="hidden">
+          <label class="block mb-1">Member 1 Name</label>
+          <input name="member1" type="text" class="w-full border px-3 py-2 rounded-md" placeholder="optional">
+        </div>
+        <div id="member2Field" class="hidden">
+          <label class="block mb-1">Member 2 Name</label>
+          <input name="member2" type="text" class="w-full border px-3 py-2 rounded-md" placeholder="optional">
+        </div>
       </div>
 
-      <!-- Dynamic Members -->
-      <div>
-        <label class="block font-semibold mb-1">Number of Additional Members</label>
-        <select id="memberCount" class="border px-3 py-2 rounded-md">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-        </select>
-
-        <div id="membersContainer" class="mt-2 space-y-2"></div>
-      </div>
-
-      <!-- Payment -->
+      <!-- PAYMENT -->
       <div class="grid md:grid-cols-2 gap-4 items-center">
         <div class="flex flex-col items-center">
           <label class="font-semibold mb-1">Scan the QR code for Payment</label>
-          <img src="../assets/QRcodeimage.jpg" alt="QR code" class="rounded-lg shadow-md w-48">
+          <img src="../assets/QRcodeimage.jpg" alt="QR code" class="rounded-lg shadow-md w-44">
           <div class="mt-3 flex items-center gap-2">
             <input id="upiId" type="text" readonly value="swizosoft@upi"
               class="border px-2 py-1 rounded w-40 text-center text-gray-700">
@@ -164,7 +213,7 @@
         </div>
 
         <div>
-          <label class="block font-semibold mb-1">Payment Screenshot *</label>
+          <label class="block mb-1">Payment Screenshot *</label>
           <input name="payment_screenshot" type="file" accept="image/*" required
             class="w-full border px-3 py-2 rounded-md">
           <small class="text-sm text-gray-600">Allowed: jpg, jpeg, png, webp. Max 2MB.</small>
@@ -172,13 +221,14 @@
       </div>
 
       <button type="submit"
-        class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all">Register</button>
+        class="primary w-full py-3 rounded-lg font-semibold text-white hover:opacity-90 transition-all">
+        Register
+      </button>
     </form>
   </div>
 
-  <!-- JS for copy + dynamic members -->
   <script>
-    // Copyable UPI ID
+    // Copy UPI
     document.getElementById('copyBtn').addEventListener('click', async () => {
       const id = document.getElementById('upiId').value;
       try {
@@ -191,19 +241,13 @@
       }
     });
 
-    // Dynamic members input
-    const container = document.getElementById('membersContainer');
-    document.getElementById('memberCount').addEventListener('change', e => {
-      const n = parseInt(e.target.value, 10);
-      container.innerHTML = '';
-      for (let i = 1; i <= n; i++) {
-        const div = document.createElement('div');
-        div.innerHTML = `
-          <label class="block text-gray-700">Member ${i} Name</label>
-          <input name="member${i}" type="text" class="w-full border px-3 py-2 rounded-md" required>
-        `;
-        container.appendChild(div);
-      }
+    // Dynamic members
+    const member1 = document.getElementById('member1Field');
+    const member2 = document.getElementById('member2Field');
+    document.getElementById('total_members').addEventListener('change', e => {
+      const total = parseInt(e.target.value, 10);
+      member1.classList.toggle('hidden', total < 2);
+      member2.classList.toggle('hidden', total < 3);
     });
   </script>
 </body>
